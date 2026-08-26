@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0" />
+
+		<title>Quiz</title>
+
+		<link rel="stylesheet"
+			  href="style.css" />
+
+	</head>
+
+	<body class="default-page">
+
+		<!-- NAVIGATION -->
+
+		<header class="navbar">
+
+			<div class="logo">
+				Quiz Page
+			</div>
+
+			<<nav id="mainNav">
+
+				<a href="home.html"
+				   class="active">
+					Home
+				</a>
+
+				<a href="quiz.html">
+					Quiz
+				</a>
+
+				<a href="laboratory.html">
+					Laboratory
+				</a>
+
+				<a href="exam.html">
+					Exam
+				</a>
+
+			</nav>
+
+			<button
+				type="button"
+				class="menu"
+				id="menuButton"
+				aria-label="Open Menu">
+
+				<span></span>
+				<span></span>
+				<span></span>
+
+			</button>
+
+		</header>
+
+
+		<!-- MAIN PAGE -->
+
+		<main class="inner-page">
+
+			<!-- PAGE INTRO -->
+
+			<section class="page-intro">
+
+				<span>
+					ACADEMIC WORK
+				</span>
+
+				<h1>
+					QUIZ
+				</h1>
+
+				<p>
+					Upload and organize your quiz activities
+					and academic outputs.
+				</p>
+
+			</section>
+
+
+			<!-- UPLOAD AREA -->
+
+			<section class="laboratory-box">
+
+				<div class="lab-actions">
+
+					<!-- CHOOSE IMAGES -->
+
+					<label
+						for="imageInput"
+						class="choose-button">
+
+						+ CHOOSE IMAGES
+
+					</label>
+
+					<input
+						type="file"
+						id="imageInput"
+						accept="image/*"
+						multiple="multiple"
+						hidden="hidden" />
+
+
+					<!-- ADD SUBMISSION -->
+
+					<button
+						type="button"
+						id="addSubmission"
+						class="add-button">
+
+						ADD SUBMISSION
+
+					</button>
+
+
+					<!-- CLEAR -->
+
+					<button
+						type="button"
+						id="clearImages"
+						class="clear-button">
+
+						CLEAR ALL
+
+					</button>
+
+				</div>
+
+
+				<!-- SELECTED IMAGES -->
+
+				<div
+					id="selectedImages"
+					class="selected-images">
+
+					<p class="empty-text">
+						No images selected.
+					</p>
+
+				</div>
+
+			</section>
+
+
+			<!-- SUBMISSIONS -->
+
+			<section class="submissions">
+
+				<div class="submission-header">
+
+					<h2>
+						My Quiz Submissions
+					</h2>
+
+					<span id="imageCount">
+						0 images
+					</span>
+
+				</div>
+
+
+				<div
+					id="submissionGrid"
+					class="submission-grid">
+
+					<div class="no-submission">
+
+						<p>
+							No submission yet.
+						</p>
+
+					</div>
+
+				</div>
+
+			</section>
+
+
+			<!-- PAGE NUMBER -->
+
+			<div class="page-number">
+				Page | 02
+			</div>
+
+		</main>
+
+
+		<!-- JAVASCRIPT -->
+
+		<script>
+
+			/* =========================
+			GET ELEMENTS
+			========================= */
+
+			const imageInput =
+			document.getElementById("imageInput");
+
+			const selectedImages =
+			document.getElementById("selectedImages");
+
+			const addSubmission =
+			document.getElementById("addSubmission");
+
+			const clearImages =
+			document.getElementById("clearImages");
+
+			const submissionGrid =
+			document.getElementById("submissionGrid");
+
+			const imageCount =
+			document.getElementById("imageCount");
+
+			const menuButton =
+			document.getElementById("menuButton");
+
+			const mainNav =
+			document.getElementById("mainNav");
+
+
+			/* =========================
+			VARIABLES
+			========================= */
+
+			let selectedFiles = [];
+
+			let savedImages =
+			JSON.parse(
+			localStorage.getItem("quizImages")
+			) || [];
+
+
+			/* =========================
+			CHOOSE IMAGES
+			========================= */
+
+			imageInput.addEventListener(
+			"change",
+			function () {
+
+			selectedFiles =
+			Array.from(this.files);
+
+			showSelectedImages();
+
+			}
+			);
+
+
+			/* =========================
+			SHOW SELECTED IMAGES
+			========================= */
+
+			function showSelectedImages() {
+
+			selectedImages.innerHTML = "";
+
+			if (selectedFiles.length === 0) {
+
+			const emptyText =
+			document.createElement("p");
+
+			emptyText.className =
+			"empty-text";
+
+			emptyText.textContent =
+			"No images selected.";
+
+			selectedImages.appendChild(
+			emptyText
+			);
+
+			return;
+			}
+
+
+			selectedFiles.forEach(
+			function (file, index) {
+
+			const reader =
+			new FileReader();
+
+
+			reader.onload =
+			function (event) {
+
+			const box =
+			document.createElement("div");
+
+			box.className =
+			"selected-image";
+
+
+			const image =
+			document.createElement("img");
+
+			image.src =
+			event.target.result;
+
+			image.alt =
+			"Selected Image";
+
+
+			const removeButton =
+			document.createElement("button");
+
+			removeButton.type =
+			"button";
+
+			removeButton.className =
+			"remove-image";
+
+			removeButton.textContent =
+			"×";
+
+
+			removeButton.addEventListener(
+			"click",
+			function () {
+
+			removeSelected(index);
+
+			}
+			);
+
+
+			box.appendChild(image);
+
+			box.appendChild(
+			removeButton
+			);
+
+			selectedImages.appendChild(
+			box
+			);
+
+			};
+
+
+			reader.readAsDataURL(file);
+
+			}
+			);
+
+			}
+
+
+			/* =========================
+			REMOVE SELECTED IMAGE
+			========================= */
+
+			function removeSelected(index) {
+
+			selectedFiles.splice(
+			index,
+			1
+			);
+
+			showSelectedImages();
+
+			}
+
+
+			/* =========================
+			ADD SUBMISSION
+			========================= */
+
+			addSubmission.addEventListener(
+			"click",
+			function () {
+
+			if (selectedFiles.length === 0) {
+
+			alert(
+			"Please choose an image first."
+			);
+
+			return;
+			}
+
+
+			let completed = 0;
+
+
+			selectedFiles.forEach(
+			function (file) {
+
+			const reader =
+			new FileReader();
+
+
+			reader.onload =
+			function (event) {
+
+			savedImages.push(
+			event.target.result
+			);
+
+			completed++;
+
+
+			if (
+			completed ===
+			selectedFiles.length
+			) {
+
+			localStorage.setItem(
+			"quizImages",
+			JSON.stringify(
+			savedImages
+			)
+			);
+
+
+			selectedFiles = [];
+
+			imageInput.value = "";
+
+			showSelectedImages();
+
+			showSubmissions();
+
+			}
+
+			};
+
+
+			reader.readAsDataURL(file);
+
+			}
+			);
+
+			}
+			);
+
+
+			/* =========================
+			CLEAR ALL
+			========================= */
+
+			clearImages.addEventListener(
+			"click",
+			function () {
+
+			if (
+			savedImages.length === 0
+			) {
+
+			if (
+			selectedFiles.length === 0
+			) {
+
+			return;
+
+			}
+
+			}
+
+
+			const confirmation =
+			confirm(
+			"Clear all quiz submissions?"
+			);
+
+
+			if (!confirmation) {
+
+			return;
+
+			}
+
+
+			selectedFiles = [];
+
+			savedImages = [];
+
+			imageInput.value = "";
+
+
+			localStorage.removeItem(
+			"quizImages"
+			);
+
+
+			showSelectedImages();
+
+			showSubmissions();
+
+			}
+			);
+
+
+			/* =========================
+			SHOW SAVED SUBMISSIONS
+			========================= */
+
+			function showSubmissions() {
+
+			submissionGrid.innerHTML = "";
+
+
+			if (savedImages.length === 1) {
+
+			imageCount.textContent =
+			"1 image";
+
+			} else {
+
+			imageCount.textContent =
+			savedImages.length +
+			" images";
+
+			}
+
+
+			if (savedImages.length === 0) {
+
+			const emptyBox =
+			document.createElement("div");
+
+			emptyBox.className =
+			"no-submission";
+
+
+			const emptyText =
+			document.createElement("p");
+
+			emptyText.textContent =
+			"No submission yet.";
+
+
+			emptyBox.appendChild(
+			emptyText
+			);
+
+
+			submissionGrid.appendChild(
+			emptyBox
+			);
+
+			return;
+
+			}
+
+
+			savedImages.forEach(
+			function (image, index) {
+
+			const card =
+			document.createElement("div");
+
+			card.className =
+			"submission-card";
+
+
+			const submissionImage =
+			document.createElement("img");
+
+			submissionImage.src =
+			image;
+
+			submissionImage.alt =
+			"Quiz " +
+			(index + 1);
+
+
+			const label =
+			document.createElement("div");
+
+			label.className =
+			"submission-label";
+
+
+			const number =
+			String(index + 1)
+			.padStart(2, "0");
+
+
+			label.textContent =
+			"Quiz " +
+			number;
+
+
+			card.appendChild(
+			submissionImage
+			);
+
+			card.appendChild(
+			label
+			);
+
+
+			submissionGrid.appendChild(
+			card
+			);
+
+			}
+			);
+
+			}
+
+
+			/* =========================
+			INITIAL DISPLAY
+			========================= */
+
+			showSelectedImages();
+
+			showSubmissions();
+
+
+			/* =========================
+			MOBILE MENU
+			========================= */
+
+			menuButton.addEventListener(
+			"click",
+			function () {
+
+			mainNav.classList.toggle(
+			"show"
+			);
+
+			}
+			);
+
+		</script>
+
+	</body>
+
+</html>
