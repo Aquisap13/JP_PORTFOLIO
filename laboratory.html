@@ -1,1601 +1,1440 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
+<head>
 
-		<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-		<meta name="viewport"
-			  content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
 
-		<title>Laboratory</title>
+    <title>Laboratory</title>
 
-		<link rel="stylesheet"
-			  href="style.css" />
+    <link rel="stylesheet"
+          href="style.css" />
 
-	</head>
+</head>
 
-	<body class="default-page">
+<body class="default-page">
 
-		<!-- NAVIGATION -->
 
-		<header class="navbar">
+    <!-- NAVIGATION -->
 
-			<div class="logo">
-				Laboratory Page
-			</div>
+    <header class="navbar">
 
-			<nav id="mainNav">
+        <div class="logo">
+            Laboratory Page
+        </div>
 
-				<a href="home.html">
-					Home
-				</a>
+        <nav id="mainNav">
 
-				<a href="quiz.html">
-					Quiz
-				</a>
+            <a href="home.html">
+                Home
+            </a>
 
-				<a href="laboratory.html"
-				   class="active">
-					Laboratory
-				</a>
+            <a href="quiz.html">
+                Quiz
+            </a>
 
-				<a href="exam.html">
-					Exam
-				</a>
+            <a href="laboratory.html"
+               class="active">
+                Laboratory
+            </a>
 
-			</nav>
+            <a href="exam.html">
+                Exam
+            </a>
 
-			<button
-				type="button"
-				class="menu"
-				id="menuButton"
-				aria-label="Open Menu">
+        </nav>
 
-				<span></span>
-				<span></span>
-				<span></span>
+        <button
+            type="button"
+            class="menu"
+            id="menuButton"
+            aria-label="Open Menu">
 
-			</button>
+            <span></span>
+            <span></span>
+            <span></span>
 
-		</header>
+        </button>
 
+    </header>
 
-		<!-- MAIN PAGE -->
 
-		<main class="inner-page">
+    <!-- MAIN PAGE -->
 
-			<!-- PAGE INTRO -->
+    <main class="inner-page">
 
-			<section class="page-intro">
+        <!-- PAGE INTRO -->
 
-				<span>
-					ACADEMIC WORK
-				</span>
+        <section class="page-intro">
 
-				<h1>
-					LABORATORY
-				</h1>
+            <span>
+                ACADEMIC WORK
+            </span>
 
-				<p>
-					Upload and organize your laboratory activities
-					and academic outputs.
-				</p>
+            <h1>
+                LABORATORY
+            </h1>
 
-			</section>
+            <p>
+                Upload and organize your laboratory activities
+                and academic outputs.
+            </p>
 
+        </section>
 
-			<!-- UPLOAD AREA (IMAGES) -->
 
-			<section class="laboratory-box">
+        <!-- UPLOAD AREA (IMAGES) -->
 
-				<div class="lab-actions">
+        <section class="laboratory-box">
 
-					<!-- CHOOSE IMAGES -->
+            <div class="lab-actions">
 
-					<label
-						for="imageInput"
-						class="choose-button">
+                <!-- CHOOSE IMAGES -->
 
-						+ CHOOSE IMAGES
+                <label
+                    for="imageInput"
+                    class="choose-button">
 
-					</label>
+                    + CHOOSE IMAGES
 
-					<input
-						type="file"
-						id="imageInput"
-						accept="image/*"
-						multiple="multiple"
-						hidden="hidden" />
+                </label>
 
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    multiple="multiple"
+                    hidden="hidden" />
 
-					<!-- ADD SUBMISSION -->
 
-					<button
-						type="button"
-						id="addSubmission"
-						class="add-button">
+                <!-- ADD SUBMISSION -->
 
-						ADD SUBMISSION
+                <button
+                    type="button"
+                    id="addSubmission"
+                    class="add-button">
 
-					</button>
+                    ADD SUBMISSION
 
+                </button>
 
-					<!-- CLEAR -->
 
-					<button
-						type="button"
-						id="clearImages"
-						class="clear-button">
+                <!-- CLEAR -->
 
-						CLEAR ALL
+                <button
+                    type="button"
+                    id="clearImages"
+                    class="clear-button">
 
-					</button>
+                    CLEAR ALL
 
-				</div>
+                </button>
 
+            </div>
 
-				<!-- SELECTED IMAGES -->
 
-				<div
-					id="selectedImages"
-					class="selected-images">
+            <!-- SELECTED IMAGES -->
 
-					<p class="empty-text">
-						No images selected.
-					</p>
+            <div
+                id="selectedImages"
+                class="selected-images">
 
-				</div>
+                <p class="empty-text">
+                    No images selected.
+                </p>
 
-			</section>
+            </div>
 
+        </section>
 
-			<!-- UPLOAD AREA (PDF) -->
 
-			<section class="laboratory-box">
+        <!-- UPLOAD AREA (PDF) -->
 
-				<div class="lab-actions">
+        <section class="laboratory-box">
 
-					<!-- CHOOSE PDF -->
+            <div class="lab-actions">
 
-					<label
-						for="pdfInput"
-						class="choose-button">
+                <!-- CHOOSE PDF -->
 
-						+ CHOOSE PDF FILES
+                <label
+                    for="pdfInput"
+                    class="choose-button">
 
-					</label>
+                    + CHOOSE PDF FILES
 
-					<input
-						type="file"
-						id="pdfInput"
-						accept="application/pdf"
-						multiple="multiple"
-						hidden="hidden" />
+                </label>
 
+                <input
+                    type="file"
+                    id="pdfInput"
+                    accept="application/pdf"
+                    multiple="multiple"
+                    hidden="hidden" />
 
-					<!-- ADD PDF -->
 
-					<button
-						type="button"
-						id="addPdf"
-						class="add-button">
+                <!-- ADD PDF -->
 
-						ADD PDF
+                <button
+                    type="button"
+                    id="addPdf"
+                    class="add-button">
 
-					</button>
+                    ADD PDF
 
+                </button>
 
-					<!-- CLEAR PDF -->
 
-					<button
-						type="button"
-						id="clearPdfs"
-						class="clear-button">
+                <!-- CLEAR PDF -->
 
-						CLEAR PDFs
+                <button
+                    type="button"
+                    id="clearPdfs"
+                    class="clear-button">
 
-					</button>
+                    CLEAR PDFs
 
-				</div>
+                </button>
 
+            </div>
 
-				<!-- SELECTED PDFs -->
 
-				<div
-					id="selectedPdfs"
-					class="selected-pdfs">
+            <!-- SELECTED PDFs -->
 
-					<p class="empty-text">
-						No PDF files selected.
-					</p>
+            <div
+                id="selectedPdfs"
+                class="selected-pdfs">
 
-				</div>
+                <p class="empty-text">
+                    No PDF files selected.
+                </p>
 
-			</section>
+            </div>
 
+        </section>
 
-			<!-- SUBMISSIONS (IMAGES) -->
 
-			<section class="submissions">
+        <!-- SUBMISSIONS (IMAGES) -->
 
-				<div class="submission-header">
+        <section class="submissions">
 
-					<h2>
-						My Laboratory Submissions
-					</h2>
+            <div class="submission-header">
 
-					<span id="imageCount">
-						0 images
-					</span>
+                <h2>
+                    My Laboratory Submissions
+                </h2>
 
-				</div>
+                <span id="imageCount">
+                    0 images
+                </span>
 
+            </div>
 
-				<div
-					id="submissionGrid"
-					class="submission-grid">
 
-					<div class="no-submission">
+            <div
+                id="submissionGrid"
+                class="submission-grid">
 
-						<p>
-							No submission yet.
-						</p>
+                <div class="no-submission">
 
-					</div>
+                    <p>
+                        No submission yet.
+                    </p>
 
-				</div>
+                </div>
 
-			</section>
+            </div>
 
+        </section>
 
-			<!-- SUBMISSIONS (PDF) -->
 
-			<section class="submissions">
+        <!-- SUBMISSIONS (PDF) -->
 
-				<div class="submission-header">
+        <section class="submissions">
 
-					<h2>
-						My Laboratory PDF Files
-					</h2>
+            <div class="submission-header">
 
-					<span id="pdfCount">
-						0 files
-					</span>
+                <h2>
+                    My Laboratory PDF Files
+                </h2>
 
-				</div>
+                <span id="pdfCount">
+                    0 files
+                </span>
 
+            </div>
 
-				<div
-					id="pdfList"
-					class="pdf-list">
 
-					<div class="no-submission">
+            <div
+                id="pdfList"
+                class="pdf-list">
 
-						<p>
-							No PDF uploaded yet.
-						</p>
+                <div class="no-submission">
 
-					</div>
+                    <p>
+                        No PDF uploaded yet.
+                    </p>
 
-				</div>
+                </div>
 
-			</section>
+            </div>
 
+        </section>
 
-			<!-- PAGE NUMBER -->
 
-			<div class="page-number">
-				Page | 03
-			</div>
+        <!-- PAGE NUMBER -->
 
-		</main>
+        <div class="page-number">
+            Page | 03
+        </div>
 
+    </main>
 
-		<!-- FIREBASE -->
 
-		<script type="module">
+    <!-- SUPABASE -->
 
-			import {
-			initializeApp
-			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    <script type="module">
 
+        import {
+            createClient
+        } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-			import {
-			getAuth,
-			signInAnonymously
-			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+        /* =====================================================
+           SUPABASE CONFIGURATION
+        ===================================================== */
 
-			import {
-			getFirestore,
-			collection,
-			addDoc,
-			getDocs,
-			deleteDoc,
-			doc,
-			orderBy,
-			query
-			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        const SUPABASE_URL =
+            "https://cynlyisyxbpnoleinkct.supabase.co";
 
 
-			import {
-			getStorage,
-			ref,
-			uploadBytes,
-			getDownloadURL,
-			deleteObject
-			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_MXKMgG_ioMiT6aTnmCXK4w_pe4k3tdC";
 
 
-			/* =====================================================
-			FIREBASE CONFIGURATION
+        const supabase =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
 
-			PALITAN ANG VALUES SA IBABA NG CONFIG MO
-			GALING SA FIREBASE CONSOLE.
-			===================================================== */
 
-			const firebaseConfig = {
+        const PDF_BUCKET =
+            "laboratory-pdfs";
 
-			apiKey: "YOUR_API_KEY",
 
-			authDomain: "YOUR_PROJECT.firebaseapp.com",
+        /* =====================================================
+           GET ELEMENTS - IMAGES
+        ===================================================== */
 
-			projectId: "YOUR_PROJECT_ID",
+        const imageInput =
+            document.getElementById("imageInput");
 
-			storageBucket: "YOUR_PROJECT.firebasestorage.app",
 
-			messagingSenderId: "YOUR_SENDER_ID",
+        const selectedImages =
+            document.getElementById("selectedImages");
 
-			appId: "YOUR_APP_ID"
 
-			};
+        const addSubmission =
+            document.getElementById("addSubmission");
 
 
-			/* =====================================================
-			INITIALIZE FIREBASE
-			===================================================== */
+        const clearImages =
+            document.getElementById("clearImages");
 
-			const app =
-			initializeApp(firebaseConfig);
 
+        const submissionGrid =
+            document.getElementById("submissionGrid");
 
-			const auth =
-			getAuth(app);
 
+        const imageCount =
+            document.getElementById("imageCount");
 
-			const db =
-			getFirestore(app);
 
+        /* =====================================================
+           GET ELEMENTS - PDF
+        ===================================================== */
 
-			const storage =
-			getStorage(app);
+        const pdfInput =
+            document.getElementById("pdfInput");
 
 
-			/* =====================================================
-			FIREBASE USER
-			===================================================== */
+        const selectedPdfs =
+            document.getElementById("selectedPdfs");
 
-			let currentUser = null;
 
+        const addPdf =
+            document.getElementById("addPdf");
 
-			try {
 
-			const userCredential =
-			await signInAnonymously(auth);
+        const clearPdfs =
+            document.getElementById("clearPdfs");
 
-			currentUser =
-			userCredential.user;
 
-			} catch (error) {
+        const pdfList =
+            document.getElementById("pdfList");
 
-			console.error(
-			"Firebase authentication error:",
-			error
-			);
 
-			alert(
-			"Firebase authentication failed. Please check your Firebase settings."
-			);
+        const pdfCount =
+            document.getElementById("pdfCount");
 
-			}
 
+        /* =====================================================
+           GET ELEMENTS - MOBILE MENU
+        ===================================================== */
 
-			/* =====================================================
-			GET ELEMENTS - IMAGES
-			===================================================== */
+        const menuButton =
+            document.getElementById("menuButton");
 
-			const imageInput =
-			document.getElementById("imageInput");
 
-			const selectedImages =
-			document.getElementById("selectedImages");
+        const mainNav =
+            document.getElementById("mainNav");
 
-			const addSubmission =
-			document.getElementById("addSubmission");
 
-			const clearImages =
-			document.getElementById("clearImages");
+        /* =====================================================
+           VARIABLES - IMAGES
+        ===================================================== */
 
-			const submissionGrid =
-			document.getElementById("submissionGrid");
+        let selectedFiles = [];
 
-			const imageCount =
-			document.getElementById("imageCount");
 
+        let savedImages =
+            JSON.parse(
+                localStorage.getItem("laboratoryImages")
+            ) || [];
 
-			/* =====================================================
-			GET ELEMENTS - PDF
-			===================================================== */
 
-			const pdfInput =
-			document.getElementById("pdfInput");
+        /* =====================================================
+           VARIABLES - PDF
+        ===================================================== */
 
-			const selectedPdfs =
-			document.getElementById("selectedPdfs");
+        let selectedPdfFiles = [];
 
-			const addPdf =
-			document.getElementById("addPdf");
 
-			const clearPdfs =
-			document.getElementById("clearPdfs");
+        /* =====================================================
+           CHOOSE IMAGES
+        ===================================================== */
 
-			const pdfList =
-			document.getElementById("pdfList");
+        imageInput.addEventListener(
+            "change",
+            function () {
 
-			const pdfCount =
-			document.getElementById("pdfCount");
+                selectedFiles =
+                    Array.from(this.files);
 
 
-			/* =====================================================
-			GET ELEMENTS - MOBILE MENU
-			===================================================== */
+                showSelectedImages();
 
-			const menuButton =
-			document.getElementById("menuButton");
+            }
+        );
 
-			const mainNav =
-			document.getElementById("mainNav");
 
+        /* =====================================================
+           SHOW SELECTED IMAGES
+        ===================================================== */
 
-			/* =====================================================
-			VARIABLES - IMAGES
-			===================================================== */
+        function showSelectedImages() {
 
-			let selectedFiles = [];
+            selectedImages.innerHTML = "";
 
 
-			let savedImages =
-			JSON.parse(
-			localStorage.getItem("laboratoryImages")
-			) || [];
+            if (selectedFiles.length === 0) {
 
+                const emptyText =
+                    document.createElement("p");
 
-			/* =====================================================
-			VARIABLES - PDF
-			===================================================== */
 
-			let selectedPdfFiles = [];
+                emptyText.className =
+                    "empty-text";
 
 
-			/* =====================================================
-			CHOOSE IMAGES
-			===================================================== */
+                emptyText.textContent =
+                    "No images selected.";
 
-			imageInput.addEventListener(
-			"change",
-			function () {
 
-			selectedFiles =
-			Array.from(this.files);
+                selectedImages.appendChild(
+                    emptyText
+                );
 
-			showSelectedImages();
 
-			}
-			);
+                return;
 
+            }
 
-			/* =====================================================
-			SHOW SELECTED IMAGES
-			===================================================== */
 
-			function showSelectedImages() {
+            selectedFiles.forEach(
+                function (file, index) {
 
-			selectedImages.innerHTML = "";
+                    const reader =
+                        new FileReader();
 
 
-			if (selectedFiles.length === 0) {
+                    reader.onload =
+                        function (event) {
 
-			const emptyText =
-			document.createElement("p");
+                            const box =
+                                document.createElement("div");
 
-			emptyText.className =
-			"empty-text";
 
-			emptyText.textContent =
-			"No images selected.";
+                            box.className =
+                                "selected-image";
 
-			selectedImages.appendChild(
-			emptyText
-			);
 
-			return;
+                            const image =
+                                document.createElement("img");
 
-			}
 
+                            image.src =
+                                event.target.result;
 
-			selectedFiles.forEach(
-			function (file, index) {
 
-			const reader =
-			new FileReader();
+                            image.alt =
+                                "Selected Image";
 
 
-			reader.onload =
-			function (event) {
+                            const removeButton =
+                                document.createElement("button");
 
-			const box =
-			document.createElement("div");
 
-			box.className =
-			"selected-image";
+                            removeButton.type =
+                                "button";
 
 
-			const image =
-			document.createElement("img");
+                            removeButton.className =
+                                "remove-image";
 
-			image.src =
-			event.target.result;
 
-			image.alt =
-			"Selected Image";
+                            removeButton.textContent =
+                                "×";
 
 
-			const removeButton =
-			document.createElement("button");
+                            removeButton.addEventListener(
+                                "click",
+                                function () {
 
-			removeButton.type =
-			"button";
+                                    removeSelected(index);
 
-			removeButton.className =
-			"remove-image";
+                                }
+                            );
 
-			removeButton.textContent =
-			"×";
 
+                            box.appendChild(
+                                image
+                            );
 
-			removeButton.addEventListener(
-			"click",
-			function () {
 
-			removeSelected(index);
+                            box.appendChild(
+                                removeButton
+                            );
 
-			}
-			);
 
+                            selectedImages.appendChild(
+                                box
+                            );
 
-			box.appendChild(
-			image
-			);
+                        };
 
-			box.appendChild(
-			removeButton
-			);
 
-			selectedImages.appendChild(
-			box
-			);
+                    reader.readAsDataURL(file);
 
-			};
+                }
+            );
 
+        }
 
-			reader.readAsDataURL(file);
 
-			}
-			);
+        /* =====================================================
+           REMOVE SELECTED IMAGE
+        ===================================================== */
 
-			}
+        function removeSelected(index) {
 
+            selectedFiles.splice(
+                index,
+                1
+            );
 
-			/* =====================================================
-			REMOVE SELECTED IMAGE
-			===================================================== */
 
-			function removeSelected(index) {
+            showSelectedImages();
 
-			selectedFiles.splice(
-			index,
-			1
-			);
+        }
 
-			showSelectedImages();
 
-			}
+        /* =====================================================
+           ADD IMAGE SUBMISSION
+        ===================================================== */
 
+        addSubmission.addEventListener(
+            "click",
+            function () {
 
-			/* =====================================================
-			ADD IMAGE SUBMISSION
-			===================================================== */
+                if (selectedFiles.length === 0) {
 
-			addSubmission.addEventListener(
-			"click",
-			function () {
+                    alert(
+                        "Please choose an image first."
+                    );
 
-			if (selectedFiles.length === 0) {
 
-			alert(
-			"Please choose an image first."
-			);
+                    return;
 
-			return;
+                }
 
-			}
 
+                let completed = 0;
 
-			let completed = 0;
 
+                selectedFiles.forEach(
+                    function (file) {
 
-			selectedFiles.forEach(
-			function (file) {
+                        const reader =
+                            new FileReader();
 
-			const reader =
-			new FileReader();
 
+                        reader.onload =
+                            function (event) {
 
-			reader.onload =
-			function (event) {
+                                savedImages.push(
+                                    event.target.result
+                                );
 
-			savedImages.push(
-			event.target.result
-			);
 
-			completed++;
+                                completed++;
 
 
-			if (
-			completed ===
-			selectedFiles.length
-			) {
+                                if (
+                                    completed ===
+                                    selectedFiles.length
+                                ) {
 
-			localStorage.setItem(
-			"laboratoryImages",
-			JSON.stringify(
-			savedImages
-			)
-			);
+                                    localStorage.setItem(
+                                        "laboratoryImages",
+                                        JSON.stringify(
+                                            savedImages
+                                        )
+                                    );
 
 
-			selectedFiles = [];
+                                    selectedFiles = [];
 
-			imageInput.value = "";
 
-			showSelectedImages();
+                                    imageInput.value = "";
 
-			showSubmissions();
 
-			}
+                                    showSelectedImages();
 
-			};
 
+                                    showSubmissions();
 
-			reader.readAsDataURL(file);
+                                }
 
-			}
-			);
+                            };
 
-			}
-			);
 
+                        reader.readAsDataURL(file);
 
-			/* =====================================================
-			CLEAR ALL IMAGES
-			===================================================== */
+                    }
+                );
 
-			clearImages.addEventListener(
-			"click",
-			function () {
+            }
+        );
 
-			if (
-			savedImages.length === 0
-			) {
 
-			if (
-			selectedFiles.length === 0
-			) {
+        /* =====================================================
+           CLEAR ALL IMAGES
+        ===================================================== */
 
-			return;
+        clearImages.addEventListener(
+            "click",
+            function () {
 
-			}
+                if (
+                    savedImages.length === 0
+                ) {
 
-			}
+                    if (
+                        selectedFiles.length === 0
+                    ) {
 
+                        return;
 
-			const confirmation =
-			confirm(
-			"Clear all laboratory submissions?"
-			);
+                    }
 
+                }
 
-			if (!confirmation) {
 
-			return;
+                const confirmation =
+                    confirm(
+                        "Clear all laboratory submissions?"
+                    );
 
-			}
 
+                if (!confirmation) {
 
-			selectedFiles = [];
+                    return;
 
-			savedImages = [];
+                }
 
-			imageInput.value = "";
 
+                selectedFiles = [];
 
-			localStorage.removeItem(
-			"laboratoryImages"
-			);
 
+                savedImages = [];
 
-			showSelectedImages();
 
-			showSubmissions();
+                imageInput.value = "";
 
-			}
-			);
 
+                localStorage.removeItem(
+                    "laboratoryImages"
+                );
 
-			/* =====================================================
-			SHOW SAVED IMAGE SUBMISSIONS
-			===================================================== */
 
-			function showSubmissions() {
+                showSelectedImages();
 
-			submissionGrid.innerHTML = "";
 
+                showSubmissions();
 
-			if (savedImages.length === 1) {
+            }
+        );
 
-			imageCount.textContent =
-			"1 image";
 
-			} else {
+        /* =====================================================
+           SHOW SAVED IMAGE SUBMISSIONS
+        ===================================================== */
 
-			imageCount.textContent =
-			savedImages.length +
-			" images";
+        function showSubmissions() {
 
-			}
+            submissionGrid.innerHTML = "";
 
 
-			if (savedImages.length === 0) {
+            if (savedImages.length === 1) {
 
-			const emptyBox =
-			document.createElement("div");
+                imageCount.textContent =
+                    "1 image";
 
-			emptyBox.className =
-			"no-submission";
+            } else {
 
+                imageCount.textContent =
+                    savedImages.length +
+                    " images";
 
-			const emptyText =
-			document.createElement("p");
+            }
 
-			emptyText.textContent =
-			"No submission yet.";
 
+            if (savedImages.length === 0) {
 
-			emptyBox.appendChild(
-			emptyText
-			);
+                const emptyBox =
+                    document.createElement("div");
 
 
-			submissionGrid.appendChild(
-			emptyBox
-			);
+                emptyBox.className =
+                    "no-submission";
 
-			return;
 
-			}
+                const emptyText =
+                    document.createElement("p");
 
 
-			savedImages.forEach(
-			function (image, index) {
+                emptyText.textContent =
+                    "No submission yet.";
 
-			const card =
-			document.createElement("div");
 
-			card.className =
-			"submission-card";
+                emptyBox.appendChild(
+                    emptyText
+                );
 
 
-			const submissionImage =
-			document.createElement("img");
+                submissionGrid.appendChild(
+                    emptyBox
+                );
 
-			submissionImage.src =
-			image;
 
-			submissionImage.alt =
-			"Laboratory " +
-			(index + 1);
+                return;
 
+            }
 
-			const label =
-			document.createElement("div");
 
-			label.className =
-			"submission-label";
+            savedImages.forEach(
+                function (image, index) {
 
+                    const card =
+                        document.createElement("div");
 
-			const number =
-			String(index + 1)
-			.padStart(2, "0");
 
+                    card.className =
+                        "submission-card";
 
-			label.textContent =
-			"Laboratory " +
-			number;
 
+                    const submissionImage =
+                        document.createElement("img");
 
-			card.appendChild(
-			submissionImage
-			);
 
-			card.appendChild(
-			label
-			);
+                    submissionImage.src =
+                        image;
 
 
-			submissionGrid.appendChild(
-			card
-			);
+                    submissionImage.alt =
+                        "Laboratory " +
+                        (index + 1);
 
-			}
-			);
 
-			}
+                    const label =
+                        document.createElement("div");
 
 
-			/* =====================================================
-			CHOOSE PDF FILES
-			===================================================== */
+                    label.className =
+                        "submission-label";
 
-			pdfInput.addEventListener(
-			"change",
-			function () {
 
-			const files =
-			Array.from(this.files);
+                    const number =
+                        String(index + 1)
+                            .padStart(2, "0");
 
 
-			const onlyPdfs =
-			files.filter(
-			function (file) {
+                    label.textContent =
+                        "Laboratory " +
+                        number;
 
-			return (
-			file.type ===
-			"application/pdf"
-			);
 
-			}
-			);
+                    card.appendChild(
+                        submissionImage
+                    );
 
 
-			if (
-			onlyPdfs.length !==
-			files.length
-			) {
+                    card.appendChild(
+                        label
+                    );
 
-			alert(
-			"Only PDF files are allowed."
-			);
 
-			}
+                    submissionGrid.appendChild(
+                        card
+                    );
 
+                }
+            );
 
-			selectedPdfFiles =
-			onlyPdfs;
+        }
 
-			showSelectedPdfs();
 
-			}
-			);
+        /* =====================================================
+           CHOOSE PDF FILES
+        ===================================================== */
 
+        pdfInput.addEventListener(
+            "change",
+            function () {
 
-			/* =====================================================
-			SHOW SELECTED PDFs
-			===================================================== */
+                const files =
+                    Array.from(this.files);
 
-			function showSelectedPdfs() {
 
-			selectedPdfs.innerHTML = "";
+                const onlyPdfs =
+                    files.filter(
+                        function (file) {
 
+                            return (
+                                file.type ===
+                                "application/pdf"
+                            );
 
-			if (
-			selectedPdfFiles.length === 0
-			) {
+                        }
+                    );
 
-			const emptyText =
-			document.createElement("p");
 
-			emptyText.className =
-			"empty-text";
+                if (
+                    onlyPdfs.length !==
+                    files.length
+                ) {
 
-			emptyText.textContent =
-			"No PDF files selected.";
+                    alert(
+                        "Only PDF files are allowed."
+                    );
 
-			selectedPdfs.appendChild(
-			emptyText
-			);
+                }
 
-			return;
 
-			}
+                selectedPdfFiles =
+                    onlyPdfs;
 
 
-			selectedPdfFiles.forEach(
-			function (file, index) {
+                showSelectedPdfs();
 
-			const row =
-			document.createElement("div");
+            }
+        );
 
-			row.className =
-			"pdf-pending-row";
 
+        /* =====================================================
+           SHOW SELECTED PDFs
+        ===================================================== */
 
-			const name =
-			document.createElement("span");
+        function showSelectedPdfs() {
 
-			name.className =
-			"pdf-pending-name";
+            selectedPdfs.innerHTML = "";
 
-			name.textContent =
-			file.name;
 
+            if (
+                selectedPdfFiles.length === 0
+            ) {
 
-			const removeButton =
-			document.createElement("button");
+                const emptyText =
+                    document.createElement("p");
 
-			removeButton.type =
-			"button";
 
-			removeButton.className =
-			"remove-image";
+                emptyText.className =
+                    "empty-text";
 
-			removeButton.textContent =
-			"×";
 
+                emptyText.textContent =
+                    "No PDF files selected.";
 
-			removeButton.addEventListener(
-			"click",
-			function () {
 
-			selectedPdfFiles.splice(
-			index,
-			1
-			);
+                selectedPdfs.appendChild(
+                    emptyText
+                );
 
-			showSelectedPdfs();
 
-			}
-			);
+                return;
 
+            }
 
-			row.appendChild(
-			name
-			);
 
-			row.appendChild(
-			removeButton
-			);
+            selectedPdfFiles.forEach(
+                function (file, index) {
 
-			selectedPdfs.appendChild(
-			row
-			);
+                    const row =
+                        document.createElement("div");
 
-			}
-			);
 
-			}
+                    row.className =
+                        "pdf-pending-row";
 
 
-			/* =====================================================
-			ADD PDF TO FIREBASE STORAGE
-			===================================================== */
+                    const name =
+                        document.createElement("span");
 
-			addPdf.addEventListener(
-			"click",
-			async function () {
 
-			if (
-			selectedPdfFiles.length === 0
-			) {
+                    name.className =
+                        "pdf-pending-name";
 
-			alert(
-			"Please choose a PDF file first."
-			);
 
-			return;
+                    name.textContent =
+                        file.name;
 
-			}
 
+                    const removeButton =
+                        document.createElement("button");
 
-			if (!currentUser) {
 
-			alert(
-			"Firebase is not connected."
-			);
+                    removeButton.type =
+                        "button";
 
-			return;
 
-			}
+                    removeButton.className =
+                        "remove-image";
 
 
-			addPdf.disabled = true;
+                    removeButton.textContent =
+                        "×";
 
-			addPdf.textContent =
-			"UPLOADING...";
 
+                    removeButton.addEventListener(
+                        "click",
+                        function () {
 
-			try {
+                            selectedPdfFiles.splice(
+                                index,
+                                1
+                            );
 
-			for (
-			const file
-			of selectedPdfFiles
-			) {
 
-			const uniqueName =
-			Date.now() +
-			"_" +
-			Math.random()
-			.toString(36)
-			.substring(2) +
-			"_" +
-			file.name;
+                            showSelectedPdfs();
 
+                        }
+                    );
 
-			const storagePath =
-			"laboratory-pdfs/" +
-			currentUser.uid +
-			"/" +
-			uniqueName;
 
+                    row.appendChild(
+                        name
+                    );
 
-			const storageReference =
-			ref(
-			storage,
-			storagePath
-			);
 
+                    row.appendChild(
+                        removeButton
+                    );
 
-			/* UPLOAD PDF */
 
-			await uploadBytes(
-			storageReference,
-			file,
-			{
-			contentType:
-			"application/pdf"
-			}
-			);
+                    selectedPdfs.appendChild(
+                        row
+                    );
 
+                }
+            );
 
-			/* GET ONLINE URL */
+        }
 
-			const downloadURL =
-			await getDownloadURL(
-			storageReference
-			);
 
+        /* =====================================================
+           ADD PDF TO SUPABASE STORAGE
+        ===================================================== */
 
-			/* SAVE PDF INFORMATION */
+        addPdf.addEventListener(
+            "click",
+            async function () {
 
-			await addDoc(
-			collection(
-			db,
-			"laboratoryPdfs"
-			),
-			{
-			name: file.name,
+                if (
+                    selectedPdfFiles.length === 0
+                ) {
 
-			url: downloadURL,
+                    alert(
+                        "Please choose a PDF file first."
+                    );
 
-			storagePath:
-			storagePath,
 
-			userId:
-			currentUser.uid,
+                    return;
 
-			createdAt:
-			new Date()
-			.toISOString()
-			}
-			);
+                }
 
-			}
 
+                addPdf.disabled = true;
 
-			selectedPdfFiles = [];
 
-			pdfInput.value = "";
+                addPdf.textContent =
+                    "UPLOADING...";
 
-			showSelectedPdfs();
 
-			await showPdfs();
+                try {
 
+                    for (
+                        const file
+                        of selectedPdfFiles
+                    ) {
 
-			alert(
-			"PDF uploaded successfully."
-			);
+                        const safeFileName =
+                            file.name
+                                .replace(
+                                    /[^a-zA-Z0-9._-]/g,
+                                    "_"
+                                );
 
 
-			} catch (error) {
+                        const uniqueName =
+                            Date.now() +
+                            "_" +
+                            Math.random()
+                                .toString(36)
+                                .substring(2) +
+                            "_" +
+                            safeFileName;
 
-			console.error(
-			"PDF upload error:",
-			error
-			);
 
+                        const uploadResult =
+                            await supabase
+                                .storage
+                                .from(PDF_BUCKET)
+                                .upload(
+                                    uniqueName,
+                                    file,
+                                    {
+                                        contentType:
+                                            "application/pdf",
 
-			alert(
-			"PDF upload failed. Please check your Firebase Storage and Firestore settings."
-			);
+                                        upsert: false
+                                    }
+                                );
 
-			}
 
+                        if (
+                            uploadResult.error
+                        ) {
 
-			addPdf.disabled = false;
+                            throw uploadResult.error;
 
-			addPdf.textContent =
-			"ADD PDF";
+                        }
 
-			}
-			);
+                    }
 
 
-			/* =====================================================
-			CLEAR PDFs
-			===================================================== */
+                    selectedPdfFiles = [];
 
-			clearPdfs.addEventListener(
-			"click",
-			async function () {
 
-			if (
-			selectedPdfFiles.length === 0
-			) {
+                    pdfInput.value = "";
 
-			const pdfs =
-			await getSavedPdfs();
 
-			if (
-			pdfs.length === 0
-			) {
+                    showSelectedPdfs();
 
-			return;
 
-			}
+                    await showPdfs();
 
-			}
 
+                    alert(
+                        "PDF uploaded successfully."
+                    );
 
-			const confirmation =
-			confirm(
-			"Clear all laboratory PDF files?"
-			);
 
+                } catch (error) {
 
-			if (!confirmation) {
+                    console.error(
+                        "PDF upload error:",
+                        error
+                    );
 
-			return;
 
-			}
+                    alert(
+                        "PDF upload failed. Please check your Supabase Storage settings."
+                    );
 
+                }
 
-			selectedPdfFiles = [];
 
-			pdfInput.value = "";
+                addPdf.disabled = false;
 
-			showSelectedPdfs();
 
+                addPdf.textContent =
+                    "ADD PDF";
 
-			if (!currentUser) {
+            }
+        );
 
-			return;
 
-			}
+        /* =====================================================
+           CLEAR SELECTED PDFs
+           
+           This only clears PDFs selected for upload.
+           It does NOT delete uploaded PDFs.
+        ===================================================== */
 
+        clearPdfs.addEventListener(
+            "click",
+            function () {
 
-			try {
+                selectedPdfFiles = [];
 
-			const pdfs =
-			await getSavedPdfs();
 
+                pdfInput.value = "";
 
-			for (
-			const pdf
-			of pdfs
-			) {
 
-			try {
+                showSelectedPdfs();
 
-			const storageReference =
-			ref(
-			storage,
-			pdf.storagePath
-			);
+            }
+        );
 
 
-			await deleteObject(
-			storageReference
-			);
+        /* =====================================================
+           GET PDFs FROM SUPABASE STORAGE
+        ===================================================== */
 
-			} catch (storageError) {
+        async function getSavedPdfs() {
 
-			console.warn(
-			"Storage delete error:",
-			storageError
-			);
+            const result =
+                await supabase
+                    .storage
+                    .from(PDF_BUCKET)
+                    .list(
+                        "",
+                        {
+                            limit: 100,
+                            sortBy: {
+                                column: "created_at",
+                                order: "asc"
+                            }
+                        }
+                    );
 
-			}
 
+            if (result.error) {
 
-			await deleteDoc(
-			doc(
-			db,
-			"laboratoryPdfs",
-			pdf.id
-			)
-			);
+                throw result.error;
 
-			}
+            }
 
 
-			await showPdfs();
+            if (!result.data) {
 
+                return [];
 
-			} catch (error) {
+            }
 
-			console.error(
-			"Clear PDF error:",
-			error
-			);
 
-			alert(
-			"Unable to clear PDF files."
-			);
+            const pdfs =
+                result.data.filter(
+                    function (file) {
 
-			}
+                        return (
+                            file.name
+                                .toLowerCase()
+                                .endsWith(".pdf")
+                        );
 
-			}
-			);
+                    }
+                );
 
 
-			/* =====================================================
-			GET PDFs FROM FIRESTORE
-			===================================================== */
+            return pdfs;
 
-			async function getSavedPdfs() {
+        }
 
-			if (!currentUser) {
 
-			return [];
+        /* =====================================================
+           SHOW SAVED PDFs
+        ===================================================== */
 
-			}
+        async function showPdfs() {
 
+            pdfList.innerHTML = "";
 
-			const pdfQuery =
-			query(
-			collection(
-			db,
-			"laboratoryPdfs"
-			),
-			orderBy(
-			"createdAt",
-			"asc"
-			)
-			);
 
+            try {
 
-			const snapshot =
-			await getDocs(
-			pdfQuery
-			);
+                const savedPdfs =
+                    await getSavedPdfs();
 
 
-			const pdfs = [];
+                if (
+                    savedPdfs.length === 1
+                ) {
 
+                    pdfCount.textContent =
+                        "1 file";
 
-			snapshot.forEach(
-			function (documentSnapshot) {
+                } else {
 
-			const data =
-			documentSnapshot.data();
+                    pdfCount.textContent =
+                        savedPdfs.length +
+                        " files";
 
+                }
 
-			if (
-			data.userId ===
-			currentUser.uid
-			) {
 
-			pdfs.push({
+                if (
+                    savedPdfs.length === 0
+                ) {
 
-			id:
-			documentSnapshot.id,
+                    const emptyBox =
+                        document.createElement("div");
 
-			name:
-			data.name,
 
-			url:
-			data.url,
+                    emptyBox.className =
+                        "no-submission";
 
-			storagePath:
-			data.storagePath,
 
-			userId:
-			data.userId
+                    const emptyText =
+                        document.createElement("p");
 
-			});
 
-			}
+                    emptyText.textContent =
+                        "No PDF uploaded yet.";
 
-			}
-			);
 
+                    emptyBox.appendChild(
+                        emptyText
+                    );
 
-			return pdfs;
 
-			}
+                    pdfList.appendChild(
+                        emptyBox
+                    );
 
 
-			/* =====================================================
-			SHOW SAVED PDFs
-			===================================================== */
+                    return;
 
-			async function showPdfs() {
+                }
 
-			pdfList.innerHTML = "";
 
+                savedPdfs.forEach(
+                    function (pdf) {
 
-			try {
+                        const row =
+                            document.createElement("div");
 
-			const savedPdfs =
-			await getSavedPdfs();
 
+                        row.className =
+                            "pdf-row";
 
-			if (
-			savedPdfs.length === 1
-			) {
 
-			pdfCount.textContent =
-			"1 file";
+                        const name =
+                            document.createElement("span");
 
-			} else {
 
-			pdfCount.textContent =
-			savedPdfs.length +
-			" files";
+                        name.className =
+                            "pdf-anchor";
 
-			}
 
+                        name.textContent =
+                            pdf.name;
 
-			if (
-			savedPdfs.length === 0
-			) {
 
-			const emptyBox =
-			document.createElement("div");
+                        const viewButton =
+                            document.createElement("button");
 
-			emptyBox.className =
-			"no-submission";
 
+                        viewButton.type =
+                            "button";
 
-			const emptyText =
-			document.createElement("p");
 
-			emptyText.textContent =
-			"No PDF uploaded yet.";
+                        viewButton.className =
+                            "add-button";
 
 
-			emptyBox.appendChild(
-			emptyText
-			);
+                        viewButton.textContent =
+                            "VIEW";
 
 
-			pdfList.appendChild(
-			emptyBox
-			);
+                        viewButton.addEventListener(
+                            "click",
+                            async function () {
 
-			return;
+                                try {
 
-			}
+                                    const result =
+                                        await supabase
+                                            .storage
+                                            .from(PDF_BUCKET)
+                                            .createSignedUrl(
+                                                pdf.name,
+                                                3600
+                                            );
 
 
-			savedPdfs.forEach(
-			function (pdf) {
+                                    if (
+                                        result.error
+                                    ) {
 
-			const row =
-			document.createElement("div");
+                                        throw result.error;
 
-			row.className =
-			"pdf-row";
+                                    }
 
 
-			const anchor =
-			document.createElement("a");
+                                    if (
+                                        !result.data ||
+                                        !result.data.signedUrl
+                                    ) {
 
-			anchor.href =
-			pdf.url;
+                                        throw new Error(
+                                            "PDF URL was not generated."
+                                        );
 
-			anchor.target =
-			"_blank";
+                                    }
 
-			anchor.rel =
-			"noopener noreferrer";
 
-			anchor.className =
-			"pdf-anchor";
+                                    window.open(
+                                        result.data.signedUrl,
+                                        "_blank"
+                                    );
 
-			anchor.textContent =
-			pdf.name;
 
+                                } catch (error) {
 
-			const removeButton =
-			document.createElement("button");
+                                    console.error(
+                                        "PDF view error:",
+                                        error
+                                    );
 
-			removeButton.type =
-			"button";
 
-			removeButton.className =
-			"remove-link";
+                                    alert(
+                                        "Unable to open this PDF."
+                                    );
 
-			removeButton.textContent =
-			"×";
+                                }
 
+                            }
+                        );
 
-			removeButton.addEventListener(
-			"click",
-			async function () {
 
-			const confirmation =
-			confirm(
-			"Delete this PDF?"
-			);
+                        row.appendChild(
+                            name
+                        );
 
 
-			if (
-			!confirmation
-			) {
+                        row.appendChild(
+                            viewButton
+                        );
 
-			return;
 
-			}
+                        pdfList.appendChild(
+                            row
+                        );
 
+                    }
+                );
 
-			try {
 
-			const storageReference =
-			ref(
-			storage,
-			pdf.storagePath
-			);
+            } catch (error) {
 
+                console.error(
+                    "Loading PDF error:",
+                    error
+                );
 
-			await deleteObject(
-			storageReference
-			);
 
+                pdfCount.textContent =
+                    "0 files";
 
-			await deleteDoc(
-			doc(
-			db,
-			"laboratoryPdfs",
-			pdf.id
-			)
-			);
 
+                const errorBox =
+                    document.createElement("div");
 
-			await showPdfs();
 
+                errorBox.className =
+                    "no-submission";
 
-			} catch (error) {
 
-			console.error(
-			"Delete PDF error:",
-			error
-			);
+                const errorText =
+                    document.createElement("p");
 
 
-			alert(
-			"Unable to delete this PDF."
-			);
+                errorText.textContent =
+                    "Unable to load PDF files.";
 
-			}
 
-			}
-			);
+                errorBox.appendChild(
+                    errorText
+                );
 
 
-			row.appendChild(
-			anchor
-			);
+                pdfList.appendChild(
+                    errorBox
+                );
 
-			row.appendChild(
-			removeButton
-			);
+            }
 
+        }
 
-			pdfList.appendChild(
-			row
-			);
 
-			}
-			);
+        /* =====================================================
+           INITIAL DISPLAY
+        ===================================================== */
 
+        showSelectedImages();
 
-			} catch (error) {
 
-			console.error(
-			"Loading PDF error:",
-			error
-			);
+        showSubmissions();
 
 
-			const errorBox =
-			document.createElement("div");
+        showSelectedPdfs();
 
-			errorBox.className =
-			"no-submission";
 
+        showPdfs();
 
-			const errorText =
-			document.createElement("p");
 
-			errorText.textContent =
-			"Unable to load PDF files.";
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
 
+        menuButton.addEventListener(
+            "click",
+            function () {
 
-			errorBox.appendChild(
-			errorText
-			);
+                mainNav.classList.toggle(
+                    "show"
+                );
 
+            }
+        );
 
-			pdfList.appendChild(
-			errorBox
-			);
+    </script>
 
-			}
-
-			}
-
-
-			/* =====================================================
-			INITIAL DISPLAY
-			===================================================== */
-
-			showSelectedImages();
-
-			showSubmissions();
-
-			showSelectedPdfs();
-
-			showPdfs();
-
-
-			/* =====================================================
-			MOBILE MENU
-			===================================================== */
-
-			menuButton.addEventListener(
-			"click",
-			function () {
-
-			mainNav.classList.toggle(
-			"show"
-			);
-
-			}
-			);
-
-		</script>
-
-	</body>
+</body>
 
 </html>
