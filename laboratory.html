@@ -292,13 +292,118 @@
 		</main>
 
 
-		<!-- JAVASCRIPT -->
+		<!-- FIREBASE -->
 
-		<script>
+		<script type="module">
 
-			/* =========================
-			GET ELEMENTS (IMAGES)
-			========================= */
+			import {
+			initializeApp
+			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+			import {
+			getAuth,
+			signInAnonymously
+			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+			import {
+			getFirestore,
+			collection,
+			addDoc,
+			getDocs,
+			deleteDoc,
+			doc,
+			orderBy,
+			query
+			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+			import {
+			getStorage,
+			ref,
+			uploadBytes,
+			getDownloadURL,
+			deleteObject
+			} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+
+			/* =====================================================
+			FIREBASE CONFIGURATION
+
+			PALITAN ANG VALUES SA IBABA NG CONFIG MO
+			GALING SA FIREBASE CONSOLE.
+			===================================================== */
+
+			const firebaseConfig = {
+
+			apiKey: "YOUR_API_KEY",
+
+			authDomain: "YOUR_PROJECT.firebaseapp.com",
+
+			projectId: "YOUR_PROJECT_ID",
+
+			storageBucket: "YOUR_PROJECT.firebasestorage.app",
+
+			messagingSenderId: "YOUR_SENDER_ID",
+
+			appId: "YOUR_APP_ID"
+
+			};
+
+
+			/* =====================================================
+			INITIALIZE FIREBASE
+			===================================================== */
+
+			const app =
+			initializeApp(firebaseConfig);
+
+
+			const auth =
+			getAuth(app);
+
+
+			const db =
+			getFirestore(app);
+
+
+			const storage =
+			getStorage(app);
+
+
+			/* =====================================================
+			FIREBASE USER
+			===================================================== */
+
+			let currentUser = null;
+
+
+			try {
+
+			const userCredential =
+			await signInAnonymously(auth);
+
+			currentUser =
+			userCredential.user;
+
+			} catch (error) {
+
+			console.error(
+			"Firebase authentication error:",
+			error
+			);
+
+			alert(
+			"Firebase authentication failed. Please check your Firebase settings."
+			);
+
+			}
+
+
+			/* =====================================================
+			GET ELEMENTS - IMAGES
+			===================================================== */
 
 			const imageInput =
 			document.getElementById("imageInput");
@@ -318,16 +423,10 @@
 			const imageCount =
 			document.getElementById("imageCount");
 
-			const menuButton =
-			document.getElementById("menuButton");
 
-			const mainNav =
-			document.getElementById("mainNav");
-
-
-			/* =========================
-			GET ELEMENTS (PDF)
-			========================= */
+			/* =====================================================
+			GET ELEMENTS - PDF
+			===================================================== */
 
 			const pdfInput =
 			document.getElementById("pdfInput");
@@ -348,11 +447,23 @@
 			document.getElementById("pdfCount");
 
 
-			/* =========================
-			VARIABLES
-			========================= */
+			/* =====================================================
+			GET ELEMENTS - MOBILE MENU
+			===================================================== */
+
+			const menuButton =
+			document.getElementById("menuButton");
+
+			const mainNav =
+			document.getElementById("mainNav");
+
+
+			/* =====================================================
+			VARIABLES - IMAGES
+			===================================================== */
 
 			let selectedFiles = [];
+
 
 			let savedImages =
 			JSON.parse(
@@ -360,17 +471,16 @@
 			) || [];
 
 
+			/* =====================================================
+			VARIABLES - PDF
+			===================================================== */
+
 			let selectedPdfFiles = [];
 
-			let savedPdfs =
-			JSON.parse(
-			localStorage.getItem("laboratoryPdfs")
-			) || [];
 
-
-			/* =========================
+			/* =====================================================
 			CHOOSE IMAGES
-			========================= */
+			===================================================== */
 
 			imageInput.addEventListener(
 			"change",
@@ -385,13 +495,14 @@
 			);
 
 
-			/* =========================
+			/* =====================================================
 			SHOW SELECTED IMAGES
-			========================= */
+			===================================================== */
 
 			function showSelectedImages() {
 
 			selectedImages.innerHTML = "";
+
 
 			if (selectedFiles.length === 0) {
 
@@ -409,6 +520,7 @@
 			);
 
 			return;
+
 			}
 
 
@@ -462,7 +574,9 @@
 			);
 
 
-			box.appendChild(image);
+			box.appendChild(
+			image
+			);
 
 			box.appendChild(
 			removeButton
@@ -483,9 +597,9 @@
 			}
 
 
-			/* =========================
+			/* =====================================================
 			REMOVE SELECTED IMAGE
-			========================= */
+			===================================================== */
 
 			function removeSelected(index) {
 
@@ -499,9 +613,9 @@
 			}
 
 
-			/* =========================
-			ADD SUBMISSION
-			========================= */
+			/* =====================================================
+			ADD IMAGE SUBMISSION
+			===================================================== */
 
 			addSubmission.addEventListener(
 			"click",
@@ -514,6 +628,7 @@
 			);
 
 			return;
+
 			}
 
 
@@ -572,9 +687,9 @@
 			);
 
 
-			/* =========================
+			/* =====================================================
 			CLEAR ALL IMAGES
-			========================= */
+			===================================================== */
 
 			clearImages.addEventListener(
 			"click",
@@ -628,9 +743,9 @@
 			);
 
 
-			/* =========================
-			SHOW SAVED SUBMISSIONS
-			========================= */
+			/* =====================================================
+			SHOW SAVED IMAGE SUBMISSIONS
+			===================================================== */
 
 			function showSubmissions() {
 
@@ -738,9 +853,9 @@
 			}
 
 
-			/* =========================
+			/* =====================================================
 			CHOOSE PDF FILES
-			========================= */
+			===================================================== */
 
 			pdfInput.addEventListener(
 			"change",
@@ -784,9 +899,9 @@
 			);
 
 
-			/* =========================
+			/* =====================================================
 			SHOW SELECTED PDFs
-			========================= */
+			===================================================== */
 
 			function showSelectedPdfs() {
 
@@ -863,7 +978,9 @@
 			);
 
 
-			row.appendChild(name);
+			row.appendChild(
+			name
+			);
 
 			row.appendChild(
 			removeButton
@@ -879,13 +996,13 @@
 			}
 
 
-			/* =========================
-			ADD PDF
-			========================= */
+			/* =====================================================
+			ADD PDF TO FIREBASE STORAGE
+			===================================================== */
 
 			addPdf.addEventListener(
 			"click",
-			function () {
+			async function () {
 
 			if (
 			selectedPdfFiles.length === 0
@@ -900,40 +1017,99 @@
 			}
 
 
-			let completed = 0;
+			if (!currentUser) {
+
+			alert(
+			"Firebase is not connected."
+			);
+
+			return;
+
+			}
 
 
-			selectedPdfFiles.forEach(
-			function (file) {
+			addPdf.disabled = true;
 
-			const reader =
-			new FileReader();
+			addPdf.textContent =
+			"UPLOADING...";
 
 
-			reader.onload =
-			function (event) {
+			try {
 
-			savedPdfs.push(
+			for (
+			const file
+			of selectedPdfFiles
+			) {
+
+			const uniqueName =
+			Date.now() +
+			"_" +
+			Math.random()
+			.toString(36)
+			.substring(2) +
+			"_" +
+			file.name;
+
+
+			const storagePath =
+			"laboratory-pdfs/" +
+			currentUser.uid +
+			"/" +
+			uniqueName;
+
+
+			const storageReference =
+			ref(
+			storage,
+			storagePath
+			);
+
+
+			/* UPLOAD PDF */
+
+			await uploadBytes(
+			storageReference,
+			file,
 			{
-			name: file.name,
-			data: event.target.result
+			contentType:
+			"application/pdf"
 			}
 			);
 
-			completed++;
 
+			/* GET ONLINE URL */
 
-			if (
-			completed ===
-			selectedPdfFiles.length
-			) {
-
-			localStorage.setItem(
-			"laboratoryPdfs",
-			JSON.stringify(
-			savedPdfs
-			)
+			const downloadURL =
+			await getDownloadURL(
+			storageReference
 			);
+
+
+			/* SAVE PDF INFORMATION */
+
+			await addDoc(
+			collection(
+			db,
+			"laboratoryPdfs"
+			),
+			{
+			name: file.name,
+
+			url: downloadURL,
+
+			storagePath:
+			storagePath,
+
+			userId:
+			currentUser.uid,
+
+			createdAt:
+			new Date()
+			.toISOString()
+			}
+			);
+
+			}
 
 
 			selectedPdfFiles = [];
@@ -942,36 +1118,55 @@
 
 			showSelectedPdfs();
 
-			showPdfs();
+			await showPdfs();
+
+
+			alert(
+			"PDF uploaded successfully."
+			);
+
+
+			} catch (error) {
+
+			console.error(
+			"PDF upload error:",
+			error
+			);
+
+
+			alert(
+			"PDF upload failed. Please check your Firebase Storage and Firestore settings."
+			);
 
 			}
 
-			};
 
+			addPdf.disabled = false;
 
-			reader.readAsDataURL(file);
+			addPdf.textContent =
+			"ADD PDF";
 
 			}
 			);
 
-			}
-			);
 
-
-			/* =========================
+			/* =====================================================
 			CLEAR PDFs
-			========================= */
+			===================================================== */
 
 			clearPdfs.addEventListener(
 			"click",
-			function () {
-
-			if (
-			savedPdfs.length === 0
-			) {
+			async function () {
 
 			if (
 			selectedPdfFiles.length === 0
+			) {
+
+			const pdfs =
+			await getSavedPdfs();
+
+			if (
+			pdfs.length === 0
 			) {
 
 			return;
@@ -996,101 +1191,178 @@
 
 			selectedPdfFiles = [];
 
-			savedPdfs = [];
-
 			pdfInput.value = "";
-
-
-			localStorage.removeItem(
-			"laboratoryPdfs"
-			);
-
 
 			showSelectedPdfs();
 
-			showPdfs();
+
+			if (!currentUser) {
+
+			return;
 
 			}
-			);
 
 
-			/* =========================
-			OPEN PDF (CONVERT DATA URL TO BLOB)
-			========================= */
+			try {
 
-			function openPdf(dataUrl) {
-
-			const parts =
-			dataUrl.split(",");
-
-			const meta =
-			parts[0];
-
-			const base64 =
-			parts[1];
-
-
-			const mimeMatch =
-			meta.match(/:(.*?);/);
-
-			const mime =
-			mimeMatch ?
-			mimeMatch[1] :
-			"application/pdf";
-
-
-			const binary =
-			atob(base64);
-
-			const array =
-			new Uint8Array(
-			binary.length
-			);
+			const pdfs =
+			await getSavedPdfs();
 
 
 			for (
-			let i = 0;
-			i < binary.length;
-			i++
+			const pdf
+			of pdfs
 			) {
 
-			array[i] =
-			binary.charCodeAt(i);
+			try {
 
-			}
-
-
-			const blob =
-			new Blob(
-			[array],
-			{ type: mime }
+			const storageReference =
+			ref(
+			storage,
+			pdf.storagePath
 			);
 
 
-			const blobUrl =
-			URL.createObjectURL(
-			blob
+			await deleteObject(
+			storageReference
 			);
 
+			} catch (storageError) {
 
-			window.open(
-			blobUrl,
-			"_blank"
+			console.warn(
+			"Storage delete error:",
+			storageError
 			);
 
 			}
 
 
-			/* =========================
+			await deleteDoc(
+			doc(
+			db,
+			"laboratoryPdfs",
+			pdf.id
+			)
+			);
+
+			}
+
+
+			await showPdfs();
+
+
+			} catch (error) {
+
+			console.error(
+			"Clear PDF error:",
+			error
+			);
+
+			alert(
+			"Unable to clear PDF files."
+			);
+
+			}
+
+			}
+			);
+
+
+			/* =====================================================
+			GET PDFs FROM FIRESTORE
+			===================================================== */
+
+			async function getSavedPdfs() {
+
+			if (!currentUser) {
+
+			return [];
+
+			}
+
+
+			const pdfQuery =
+			query(
+			collection(
+			db,
+			"laboratoryPdfs"
+			),
+			orderBy(
+			"createdAt",
+			"asc"
+			)
+			);
+
+
+			const snapshot =
+			await getDocs(
+			pdfQuery
+			);
+
+
+			const pdfs = [];
+
+
+			snapshot.forEach(
+			function (documentSnapshot) {
+
+			const data =
+			documentSnapshot.data();
+
+
+			if (
+			data.userId ===
+			currentUser.uid
+			) {
+
+			pdfs.push({
+
+			id:
+			documentSnapshot.id,
+
+			name:
+			data.name,
+
+			url:
+			data.url,
+
+			storagePath:
+			data.storagePath,
+
+			userId:
+			data.userId
+
+			});
+
+			}
+
+			}
+			);
+
+
+			return pdfs;
+
+			}
+
+
+			/* =====================================================
 			SHOW SAVED PDFs
-			========================= */
+			===================================================== */
 
-			function showPdfs() {
+			async function showPdfs() {
 
 			pdfList.innerHTML = "";
 
 
-			if (savedPdfs.length === 1) {
+			try {
+
+			const savedPdfs =
+			await getSavedPdfs();
+
+
+			if (
+			savedPdfs.length === 1
+			) {
 
 			pdfCount.textContent =
 			"1 file";
@@ -1104,7 +1376,9 @@
 			}
 
 
-			if (savedPdfs.length === 0) {
+			if (
+			savedPdfs.length === 0
+			) {
 
 			const emptyBox =
 			document.createElement("div");
@@ -1135,7 +1409,7 @@
 
 
 			savedPdfs.forEach(
-			function (pdf, index) {
+			function (pdf) {
 
 			const row =
 			document.createElement("div");
@@ -1148,25 +1422,19 @@
 			document.createElement("a");
 
 			anchor.href =
-			"#";
+			pdf.url;
+
+			anchor.target =
+			"_blank";
+
+			anchor.rel =
+			"noopener noreferrer";
 
 			anchor.className =
 			"pdf-anchor";
 
 			anchor.textContent =
 			pdf.name;
-
-
-			anchor.addEventListener(
-			"click",
-			function (event) {
-
-			event.preventDefault();
-
-			openPdf(pdf.data);
-
-			}
-			);
 
 
 			const removeButton =
@@ -1184,31 +1452,75 @@
 
 			removeButton.addEventListener(
 			"click",
-			function () {
+			async function () {
 
-			savedPdfs.splice(
-			index,
-			1
+			const confirmation =
+			confirm(
+			"Delete this PDF?"
 			);
 
-			localStorage.setItem(
+
+			if (
+			!confirmation
+			) {
+
+			return;
+
+			}
+
+
+			try {
+
+			const storageReference =
+			ref(
+			storage,
+			pdf.storagePath
+			);
+
+
+			await deleteObject(
+			storageReference
+			);
+
+
+			await deleteDoc(
+			doc(
+			db,
 			"laboratoryPdfs",
-			JSON.stringify(
-			savedPdfs
+			pdf.id
 			)
 			);
 
-			showPdfs();
+
+			await showPdfs();
+
+
+			} catch (error) {
+
+			console.error(
+			"Delete PDF error:",
+			error
+			);
+
+
+			alert(
+			"Unable to delete this PDF."
+			);
+
+			}
 
 			}
 			);
 
 
-			row.appendChild(anchor);
+			row.appendChild(
+			anchor
+			);
 
 			row.appendChild(
 			removeButton
 			);
+
 
 			pdfList.appendChild(
 			row
@@ -1217,12 +1529,46 @@
 			}
 			);
 
+
+			} catch (error) {
+
+			console.error(
+			"Loading PDF error:",
+			error
+			);
+
+
+			const errorBox =
+			document.createElement("div");
+
+			errorBox.className =
+			"no-submission";
+
+
+			const errorText =
+			document.createElement("p");
+
+			errorText.textContent =
+			"Unable to load PDF files.";
+
+
+			errorBox.appendChild(
+			errorText
+			);
+
+
+			pdfList.appendChild(
+			errorBox
+			);
+
+			}
+
 			}
 
 
-			/* =========================
+			/* =====================================================
 			INITIAL DISPLAY
-			========================= */
+			===================================================== */
 
 			showSelectedImages();
 
@@ -1233,9 +1579,9 @@
 			showPdfs();
 
 
-			/* =========================
+			/* =====================================================
 			MOBILE MENU
-			========================= */
+			===================================================== */
 
 			menuButton.addEventListener(
 			"click",
