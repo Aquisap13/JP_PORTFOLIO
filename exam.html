@@ -8,7 +8,7 @@
 		<meta name="viewport"
 			  content="width=device-width, initial-scale=1.0" />
 
-		<title>Exam</title>
+		<title>Quiz</title>
 
 		<link rel="stylesheet"
 			  href="style.css" />
@@ -22,7 +22,7 @@
 		<header class="navbar">
 
 			<div class="logo">
-				Exam Page
+				Quiz Page
 			</div>
 
 			<nav id="mainNav">
@@ -31,7 +31,7 @@
 					Home
 				</a>
 
-				<a href="quiz.html">
+				<a href="quiz.html" class="active">
 					Quiz
 				</a>
 
@@ -39,8 +39,7 @@
 					Laboratory
 				</a>
 
-				<a href="exam.html"
-				   class="active">
+				<a href="exam.html">
 					Exam
 				</a>
 
@@ -74,11 +73,11 @@
 				</span>
 
 				<h1>
-					EXAM
+					QUIZ
 				</h1>
 
 				<p>
-					Upload and organize your exam activities
+					Upload and organize your quiz activities
 					and academic outputs.
 				</p>
 
@@ -157,7 +156,7 @@
 				<div class="submission-header">
 
 					<h2>
-						My Exam Submissions
+						My Quiz Submissions
 					</h2>
 
 					<span id="imageCount">
@@ -187,7 +186,7 @@
 			<!-- PAGE NUMBER -->
 
 			<div class="page-number">
-				Page | 04
+				Page | 02
 			</div>
 
 		</main>
@@ -234,7 +233,7 @@
 
 			let savedImages =
 			JSON.parse(
-			localStorage.getItem("examImages")
+			localStorage.getItem("quizImages")
 			) || [];
 
 
@@ -413,7 +412,7 @@
 			) {
 
 			localStorage.setItem(
-			"examImages",
+			"quizImages",
 			JSON.stringify(
 			savedImages
 			)
@@ -467,7 +466,7 @@
 
 			const confirmation =
 			confirm(
-			"Clear all exam submissions?"
+			"Clear all quiz submissions?"
 			);
 
 
@@ -486,7 +485,7 @@
 
 
 			localStorage.removeItem(
-			"examImages"
+			"quizImages"
 			);
 
 
@@ -568,7 +567,7 @@
 			image;
 
 			submissionImage.alt =
-			"Exam " +
+			"Quiz " +
 			(index + 1);
 
 
@@ -585,7 +584,7 @@
 
 
 			label.textContent =
-			"Exam " +
+			"Quiz " +
 			number;
 
 
