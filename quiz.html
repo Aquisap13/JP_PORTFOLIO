@@ -1,638 +1,362 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-	<head>
+<head>
 
-		<meta charset="UTF-8" />
+    <meta charset="UTF-8">
 
-		<meta name="viewport"
-			  content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-		<title>Quiz</title>
+    <title>Quiz</title>
 
-		<link rel="stylesheet"
-			  href="style.css" />
+    <link rel="stylesheet"
+          href="style.css">
 
-	</head>
+</head>
 
-	<body class="default-page">
 
-		<!-- NAVIGATION -->
+<body class="default-page">
 
-		<header class="navbar">
 
-			<div class="logo">
-				Quiz Page
-			</div>
+    <!-- NAVIGATION -->
 
-			<nav id="mainNav">
+    <header class="navbar">
 
-				<a href="home.html">
-					Home
-				</a>
+        <div class="logo">
+            Quiz Page
+        </div>
 
-				<a href="quiz.html" class="active">
-					Quiz
-				</a>
 
-				<a href="laboratory.html">
-					Laboratory
-				</a>
+        <nav id="mainNav">
 
-				<a href="exam.html">
-					Exam
-				</a>
+            <a href="home.html">
+                Home
+            </a>
 
-			</nav>
+            <a href="quiz.html">
+				class="active">
+                Quiz
+            </a>
 
-			<button
-				type="button"
-				class="menu"
-				id="menuButton"
-				aria-label="Open Menu">
+            <a href="laboratory.html"
+                Laboratory
+            </a>
 
-				<span></span>
-				<span></span>
-				<span></span>
+            <a href="exam.html">
+                Exam
+            </a>
 
-			</button>
+        </nav>
 
-		</header>
 
+        <button
+            type="button"
+            class="menu"
+            id="menuButton"
+            aria-label="Open Menu">
 
-		<!-- MAIN PAGE -->
+            <span></span>
+            <span></span>
+            <span></span>
 
-		<main class="inner-page">
+        </button>
 
-			<!-- PAGE INTRO -->
+    </header>
 
-			<section class="page-intro">
 
-				<span>
-					ACADEMIC WORK
-				</span>
 
-				<h1>
-					QUIZ
-				</h1>
+    <!-- MAIN PAGE -->
 
-				<p>
-					Upload and organize your quiz activities
-					and academic outputs.
-				</p>
+    <main class="inner-page">
 
-			</section>
 
+        <!-- PAGE INTRO -->
 
-			<!-- UPLOAD AREA -->
+        <section class="page-intro">
 
-			<section class="laboratory-box">
+            <span>
+                ACADEMIC WORK
+            </span>
 
-				<div class="lab-actions">
+            <h1>
+                LABORATORY
+            </h1>
 
-					<!-- CHOOSE IMAGES -->
+            <p>
+                View and access laboratory activities
+                and academic outputs.
+            </p>
 
-					<label
-						for="imageInput"
-						class="choose-button">
+        </section>
 
-						+ CHOOSE IMAGES
 
-					</label>
 
-					<input
-						type="file"
-						id="imageInput"
-						accept="image/*"
-						multiple="multiple"
-						hidden="hidden" />
+        <!-- PDF FILES -->
 
+        <section class="submissions">
 
-					<!-- ADD SUBMISSION -->
 
-					<button
-						type="button"
-						id="addSubmission"
-						class="add-button">
+            <div class="submission-header">
 
-						ADD SUBMISSION
+                <h2>
+                    My Quiz Files
+                </h2>
 
-					</button>
+                <span id="pdfCount">
+                    0 files
+                </span>
 
+            </div>
 
-					<!-- CLEAR -->
 
-					<button
-						type="button"
-						id="clearImages"
-						class="clear-button">
+            <div
+                id="pdfList"
+                class="pdf-list">
 
-						CLEAR ALL
+            </div>
 
-					</button>
 
-				</div>
+        </section>
 
 
-				<!-- SELECTED IMAGES -->
 
-				<div
-					id="selectedImages"
-					class="selected-images">
+        <!-- PAGE NUMBER -->
 
-					<p class="empty-text">
-						No images selected.
-					</p>
+        <div class="page-number">
+            Page | 03
+        </div>
 
-				</div>
 
-			</section>
+    </main>
 
 
-			<!-- SUBMISSIONS -->
 
-			<section class="submissions">
+    <!-- JAVASCRIPT -->
 
-				<div class="submission-header">
+    <script>
 
-					<h2>
-						My Quiz Submissions
-					</h2>
+        const pdfFiles = [
 
-					<span id="imageCount">
-						0 images
-					</span>
+            {
+                name: "Quiz 01",
+                link: "pdfs/Laboratory1.pdf"
+            },
 
-				</div>
+            {
+                name: "Quiz 02",
+                link: "pdfs/Laboratory2.pdf"
+            },
 
+            {
+                name: "Quiz 03",
+                link: "pdfs/Laboratory3.pdf"
+            },
 
-				<div
-					id="submissionGrid"
-					class="submission-grid">
 
-					<div class="no-submission">
+        ];
 
-						<p>
-							No submission yet.
-						</p>
 
-					</div>
 
-				</div>
+        /* =====================================================
+           GET ELEMENTS
+        ===================================================== */
 
-			</section>
 
+        const pdfList =
+            document.getElementById("pdfList");
 
-			<!-- PAGE NUMBER -->
 
-			<div class="page-number">
-				Page | 02
-			</div>
+        const pdfCount =
+            document.getElementById("pdfCount");
 
-		</main>
 
+        const menuButton =
+            document.getElementById("menuButton");
 
-		<!-- JAVASCRIPT -->
 
-		<script>
+        const mainNav =
+            document.getElementById("mainNav");
 
-			/* =========================
-			GET ELEMENTS
-			========================= */
 
-			const imageInput =
-			document.getElementById("imageInput");
 
-			const selectedImages =
-			document.getElementById("selectedImages");
+        /* =====================================================
+           SHOW PDF FILES
+        ===================================================== */
 
-			const addSubmission =
-			document.getElementById("addSubmission");
 
-			const clearImages =
-			document.getElementById("clearImages");
+        function showPdfs() {
 
-			const submissionGrid =
-			document.getElementById("submissionGrid");
 
-			const imageCount =
-			document.getElementById("imageCount");
+            pdfList.innerHTML = "";
 
-			const menuButton =
-			document.getElementById("menuButton");
 
-			const mainNav =
-			document.getElementById("mainNav");
+            /* PDF COUNT */
 
+            if (pdfFiles.length === 1) {
 
-			/* =========================
-			VARIABLES
-			========================= */
+                pdfCount.textContent =
+                    "1 file";
 
-			let selectedFiles = [];
+            } else {
 
-			let savedImages =
-			JSON.parse(
-			localStorage.getItem("quizImages")
-			) || [];
+                pdfCount.textContent =
+                    pdfFiles.length + " files";
 
+            }
 
-			/* =========================
-			CHOOSE IMAGES
-			========================= */
 
-			imageInput.addEventListener(
-			"change",
-			function () {
 
-			selectedFiles =
-			Array.from(this.files);
+            /* NO PDF */
 
-			showSelectedImages();
+            if (pdfFiles.length === 0) {
 
-			}
-			);
 
+                const emptyBox =
+                    document.createElement("div");
 
-			/* =========================
-			SHOW SELECTED IMAGES
-			========================= */
 
-			function showSelectedImages() {
+                emptyBox.className =
+                    "no-submission";
 
-			selectedImages.innerHTML = "";
 
-			if (selectedFiles.length === 0) {
+                const emptyText =
+                    document.createElement("p");
 
-			const emptyText =
-			document.createElement("p");
 
-			emptyText.className =
-			"empty-text";
+                emptyText.textContent =
+                    "No PDF files available.";
 
-			emptyText.textContent =
-			"No images selected.";
 
-			selectedImages.appendChild(
-			emptyText
-			);
+                emptyBox.appendChild(
+                    emptyText
+                );
 
-			return;
-			}
 
+                pdfList.appendChild(
+                    emptyBox
+                );
 
-			selectedFiles.forEach(
-			function (file, index) {
 
-			const reader =
-			new FileReader();
+                return;
 
+            }
 
-			reader.onload =
-			function (event) {
 
-			const box =
-			document.createElement("div");
 
-			box.className =
-			"selected-image";
+            /* DISPLAY PDF FILES */
 
+            pdfFiles.forEach(
+                function (pdf) {
 
-			const image =
-			document.createElement("img");
 
-			image.src =
-			event.target.result;
+                    const row =
+                        document.createElement("div");
 
-			image.alt =
-			"Selected Image";
 
+                    row.className =
+                        "pdf-row";
 
-			const removeButton =
-			document.createElement("button");
 
-			removeButton.type =
-			"button";
 
-			removeButton.className =
-			"remove-image";
+                    /* PDF NAME */
 
-			removeButton.textContent =
-			"×";
+                    const name =
+                        document.createElement("span");
 
 
-			removeButton.addEventListener(
-			"click",
-			function () {
+                    name.className =
+                        "pdf-anchor";
 
-			removeSelected(index);
 
-			}
-			);
+                    name.textContent =
+                        pdf.name;
 
 
-			box.appendChild(image);
 
-			box.appendChild(
-			removeButton
-			);
+                    /* VIEW BUTTON */
 
-			selectedImages.appendChild(
-			box
-			);
+                    const viewButton =
+                        document.createElement("a");
 
-			};
 
+                    viewButton.href =
+                        pdf.link;
 
-			reader.readAsDataURL(file);
 
-			}
-			);
+                    viewButton.target =
+                        "_blank";
 
-			}
 
+                    viewButton.rel =
+                        "noopener noreferrer";
 
-			/* =========================
-			REMOVE SELECTED IMAGE
-			========================= */
 
-			function removeSelected(index) {
+                    viewButton.className =
+                        "add-button";
 
-			selectedFiles.splice(
-			index,
-			1
-			);
 
-			showSelectedImages();
+                    viewButton.textContent =
+                        "VIEW";
 
-			}
 
 
-			/* =========================
-			ADD SUBMISSION
-			========================= */
+                    /* ADD TO ROW */
 
-			addSubmission.addEventListener(
-			"click",
-			function () {
+                    row.appendChild(
+                        name
+                    );
 
-			if (selectedFiles.length === 0) {
 
-			alert(
-			"Please choose an image first."
-			);
+                    row.appendChild(
+                        viewButton
+                    );
 
-			return;
-			}
 
 
-			let completed = 0;
+                    /* ADD TO LIST */
 
+                    pdfList.appendChild(
+                        row
+                    );
 
-			selectedFiles.forEach(
-			function (file) {
+                }
+            );
 
-			const reader =
-			new FileReader();
+        }
 
 
-			reader.onload =
-			function (event) {
 
-			savedImages.push(
-			event.target.result
-			);
+        /* =====================================================
+           LOAD PDF FILES
+        ===================================================== */
 
-			completed++;
 
+        showPdfs();
 
-			if (
-			completed ===
-			selectedFiles.length
-			) {
 
-			localStorage.setItem(
-			"quizImages",
-			JSON.stringify(
-			savedImages
-			)
-			);
 
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
 
-			selectedFiles = [];
 
-			imageInput.value = "";
+        menuButton.addEventListener(
+            "click",
+            function () {
 
-			showSelectedImages();
+                mainNav.classList.toggle(
+                    "show"
+                );
 
-			showSubmissions();
+            }
+        );
 
-			}
 
-			};
+    </script>
 
 
-			reader.readAsDataURL(file);
-
-			}
-			);
-
-			}
-			);
-
-
-			/* =========================
-			CLEAR ALL
-			========================= */
-
-			clearImages.addEventListener(
-			"click",
-			function () {
-
-			if (
-			savedImages.length === 0
-			) {
-
-			if (
-			selectedFiles.length === 0
-			) {
-
-			return;
-
-			}
-
-			}
-
-
-			const confirmation =
-			confirm(
-			"Clear all quiz submissions?"
-			);
-
-
-			if (!confirmation) {
-
-			return;
-
-			}
-
-
-			selectedFiles = [];
-
-			savedImages = [];
-
-			imageInput.value = "";
-
-
-			localStorage.removeItem(
-			"quizImages"
-			);
-
-
-			showSelectedImages();
-
-			showSubmissions();
-
-			}
-			);
-
-
-			/* =========================
-			SHOW SAVED SUBMISSIONS
-			========================= */
-
-			function showSubmissions() {
-
-			submissionGrid.innerHTML = "";
-
-
-			if (savedImages.length === 1) {
-
-			imageCount.textContent =
-			"1 image";
-
-			} else {
-
-			imageCount.textContent =
-			savedImages.length +
-			" images";
-
-			}
-
-
-			if (savedImages.length === 0) {
-
-			const emptyBox =
-			document.createElement("div");
-
-			emptyBox.className =
-			"no-submission";
-
-
-			const emptyText =
-			document.createElement("p");
-
-			emptyText.textContent =
-			"No submission yet.";
-
-
-			emptyBox.appendChild(
-			emptyText
-			);
-
-
-			submissionGrid.appendChild(
-			emptyBox
-			);
-
-			return;
-
-			}
-
-
-			savedImages.forEach(
-			function (image, index) {
-
-			const card =
-			document.createElement("div");
-
-			card.className =
-			"submission-card";
-
-
-			const submissionImage =
-			document.createElement("img");
-
-			submissionImage.src =
-			image;
-
-			submissionImage.alt =
-			"Quiz " +
-			(index + 1);
-
-
-			const label =
-			document.createElement("div");
-
-			label.className =
-			"submission-label";
-
-
-			const number =
-			String(index + 1)
-			.padStart(2, "0");
-
-
-			label.textContent =
-			"Quiz " +
-			number;
-
-
-			card.appendChild(
-			submissionImage
-			);
-
-			card.appendChild(
-			label
-			);
-
-
-			submissionGrid.appendChild(
-			card
-			);
-
-			}
-			);
-
-			}
-
-
-			/* =========================
-			INITIAL DISPLAY
-			========================= */
-
-			showSelectedImages();
-
-			showSubmissions();
-
-
-			/* =========================
-			MOBILE MENU
-			========================= */
-
-			menuButton.addEventListener(
-			"click",
-			function () {
-
-			mainNav.classList.toggle(
-			"show"
-			);
-
-			}
-			);
-
-		</script>
-
-	</body>
+</body>
 
 </html>
